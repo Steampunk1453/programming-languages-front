@@ -1,0 +1,25 @@
+{
+  "languages": [
+    {
+      "name": "Kotlin",
+      "designed": "Jetbrains",
+      "year": 2013,
+      "version": "1.3.61",
+      "web": "https://kotlinlang.org"
+    },
+    {
+      "name": "Java",
+      "designed": "James Gosling",
+      "year": 1995,
+      "version": "Java SE 14",
+      "web": "https://openjdk.java.net"
+    },
+    {
+      "name": "Groovy",
+      "designed": "James Strachan",
+      "year": 2003,
+      "version": "3.0.2",
+      "web": "http://groovy-lang.org/"
+    }
+  ]
+}
