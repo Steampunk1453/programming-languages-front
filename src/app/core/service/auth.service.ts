@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { of, Observable, throwError } from 'rxjs';
-
-import { User } from '../../data/schema/user';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {map} from "rxjs/operators";
+import {ApiService} from "../../data/service/api.service";
+import {User} from "../../data/schema/user";
 
 interface LoginContextInterface {
   username: string;
@@ -9,35 +10,46 @@ interface LoginContextInterface {
   token: string;
 }
 
-const defaultUser = {
-  username: 'username',
-  password: 'password',
-  email:'email@gmail.com',
-  token: '12345'
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private USER_URL = "/user";
   token: string;
 
-  login(loginContext: LoginContextInterface): Observable<User> {
-    if (
-      loginContext.username === defaultUser.username &&
-      loginContext.password === defaultUser.password
-    ) {
-        return of(defaultUser);
+  constructor(private apiService: ApiService) {}
+
+  register(user: User): Observable<User> {
+    return this.apiService.post(this.USER_URL + '/register', user)
+      .pipe(
+        map((data) => {
+            return data;
+          }
+        )
+      );
+  }
+
+  login(loginContext: LoginContextInterface): Observable<string> {
+    return this.apiService.post(this.USER_URL + '/login', loginContext)
+      .pipe(
+        map((data) => {
+          this.saveToken(data)
+            return data;
+          }
+        )
+      );
+  }
+
+  private saveToken(loginResponse: any) {
+    if (loginResponse) {
+      localStorage.setItem('token', loginResponse.token);
+      console.log('Token:' + loginResponse.token);
     }
-
-    return throwError('Invalid username or password');
   }
 
-  logout(): Observable<boolean> {
-    return of(false);
+  logout() {
+    localStorage.removeItem('token');
   }
 
-  getToken() {
-    return this.getToken;
-  }
 }

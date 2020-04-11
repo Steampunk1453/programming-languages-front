@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {ToastrModule} from 'ngx-toastr';
 
 
 import {
-  faCodeBranch,
   faAsterisk,
   faBars,
   faUserCircle,
@@ -69,16 +69,18 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MaterialModule} from "./material.module";
 import {NgxMasonryModule} from "ngx-masonry";
 import {library} from "@fortawesome/fontawesome-svg-core";
+import {ErrorDialogComponent} from "./component/error-dialog/error-dialog.component";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [ControlMessagesComponent, SpinnerComponent],
+  declarations: [ControlMessagesComponent, SpinnerComponent, ErrorDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   exports: [
     CommonModule,
@@ -90,7 +92,9 @@ import {library} from "@fortawesome/fontawesome-svg-core";
     FontAwesomeModule,
     NgxMasonryModule,
     ControlMessagesComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ErrorDialogComponent,
+    MatDialogModule
   ]
 })
 export class SharedModule { }

@@ -13,6 +13,10 @@
 // import custom component themes here
 @import 'styles-reset.scss-theme';
 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "../node_modules/ngx-toastr/toastr.css";
+
 @mixin custom-components-theme($theme) {
   @include my-styles-reset-theme($theme);
 }
