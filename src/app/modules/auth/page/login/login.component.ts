@@ -27,8 +27,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  get f () {
+  get form () {
     return this.loginForm.controls;
+  }
+
+  private buildForm(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   login() {
@@ -38,18 +45,11 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(credentials)
       .pipe(
-        delay(5000),
+        delay(1000),
         tap(user => this.router.navigate(['/dashboard/home'])),
         finalize(() => this.isLoading = false),
         catchError(error => of(this.error = error))
       ).subscribe();
-  }
-
-  private buildForm(): void {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
   }
 
 }
