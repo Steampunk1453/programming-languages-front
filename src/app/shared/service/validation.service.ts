@@ -9,6 +9,7 @@ export class ValidationService {
     const config = {
       required: `Field is required.`,
       invalidPassword: 'Invalid password. Password must be at least 6 characters long, and contain a number.',
+      invalidEmailAddress: 'A valid email address is required',
       maxlength: `The field can't contain more than ${validatorValue.requiredLength} characters.`,
       minlength: `The field must contain atleast ${validatorValue.requiredLength} characters.`
     };
@@ -24,4 +25,13 @@ export class ValidationService {
     // (?!.*\s)          - Spaces are not allowed
     return (control.value.match(/^(?=.*\d)(?=.*[a-zA-Z!@#$%^&*])(?!.*\s).{6,100}$/)) ? '' : { invalidPassword: true };
   }
+
+  public static emailValidator(control: AbstractControl) {
+    if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+      return null;
+    } else {
+      return { invalidEmailAddress: true };
+    }
+  }
+
 }
