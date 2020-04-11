@@ -7,7 +7,7 @@ import { JsonApiService } from './json-api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService {
+export class LanguageService {
   constructor (
     private jsonApiService: JsonApiService
   ) {}

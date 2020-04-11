@@ -23,7 +23,7 @@ export class ControlMessagesComponent {
         );
       }
     }
-
     return undefined;
   }
+
 }
