@@ -1,7 +1,8 @@
 export class Language {
+  id: string;
   name: string;
-  designed: string;
-  year: number;
   version: string;
+  year: number;
+  designed: string;
   web: string;
 }
