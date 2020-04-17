@@ -37,7 +37,8 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           console.log('event--->>>', event);
           if(event.status && event.statusText) {
-            this.toastService.success(event.statusText)
+            const message: string = `Action executed successfully: ${event.statusText}`
+            this.toastService.success(message)
           }
           // this.errorDialogService.openDialog(event);
         }
