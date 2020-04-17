@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {ToastrModule} from 'ngx-toastr';
 
 
@@ -71,9 +71,12 @@ import {NgxMasonryModule} from "ngx-masonry";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {ErrorDialogComponent} from "./component/error-dialog/error-dialog.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import {DatepickerInputComponent} from "./component/date-picker/components/datepicker-input/datepicker-input.component";
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 @NgModule({
-  declarations: [ControlMessagesComponent, SpinnerComponent, ErrorDialogComponent],
+  declarations: [ControlMessagesComponent, SpinnerComponent, ErrorDialogComponent, DatepickerInputComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -81,6 +84,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     RouterModule,
     NgbModule,
     FontAwesomeModule,
+    BsDatepickerModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -91,10 +95,14 @@ import {MatDialogModule} from "@angular/material/dialog";
     NgbModule,
     FontAwesomeModule,
     NgxMasonryModule,
+    MatDialogModule,
     ControlMessagesComponent,
     SpinnerComponent,
     ErrorDialogComponent,
-    MatDialogModule
-  ]
+    DatepickerInputComponent,
+  ],
+  providers: [
+    DatePipe
+  ],
 })
 export class SharedModule { }
