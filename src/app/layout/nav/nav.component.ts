@@ -9,12 +9,9 @@ import {environment} from "../../../environments/environment";
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  public version = environment.version;
-  public repoUrl = '';
-  public isDarkTheme$: Observable<boolean>;
 
   navItems = [
-    { link: '/dashboard/home', title: 'Home' },
+    { link: '/home', title: 'Home' },
     { link: '/languages', title: 'Languages' }
   ];
 
@@ -23,6 +20,4 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleTheme(checked: boolean) {
-  }
 }
