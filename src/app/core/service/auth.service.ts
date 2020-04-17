@@ -15,8 +15,9 @@ interface LoginContextInterface {
   providedIn: 'root'
 })
 export class AuthService {
-  private USER_URL = "/user";
+  private USER_URL = '/user';
   token: string;
+  isAuthenticated = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -35,6 +36,7 @@ export class AuthService {
       .pipe(
         map((data) => {
           this.saveToken(data)
+          this.isAuthenticated = true;
             return data;
           }
         )
@@ -49,6 +51,7 @@ export class AuthService {
   }
 
   logout() {
+    this.isAuthenticated = false;
     localStorage.removeItem('token');
   }
 
