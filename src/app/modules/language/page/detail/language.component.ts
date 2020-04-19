@@ -59,17 +59,17 @@ export class LanguageComponent implements OnInit {
   }
 
   updateLanguage() {
-    this.validateLanguage()
-    const language = this.languageForm.value;
-
-    this.languageService.update(language, language.id).pipe(
-      catchError(error => of(this.error = error)))
-      .subscribe((data) => {
-        if (data) {
-          this.languageResponse = data;
-          this.router.navigate(['/languages/list'])
-        }
-      });
+    if (this.validateLanguage()) {
+      const language = this.languageForm.value;
+      this.languageService.update(language, language.id).pipe(
+        catchError(error => of(this.error = error)))
+        .subscribe((data) => {
+          if (data) {
+            this.languageResponse = data;
+            this.router.navigate(['/languages/list'])
+          }
+        });
+    }
   }
 
   private getFormElements(id: string) {
