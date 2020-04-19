@@ -33,7 +33,7 @@ export class LanguageService {
       );
   }
 
-  getById(id: number): Observable<Language> {
+  getById(id: number | string): Observable<Language> {
     return this.apiService.get(`${this.LANGUAGE_URL}id/${id}`)
       .pipe(
         map((data) => {
@@ -44,7 +44,7 @@ export class LanguageService {
   }
 
   getByName(name: string): Observable<Language> {
-    return this.apiService.get(`${this.LANGUAGE_URL}id/${name}`)
+    return this.apiService.get(`${this.LANGUAGE_URL}name/${name}`)
       .pipe(
         map((data) => {
             return data;
@@ -53,8 +53,8 @@ export class LanguageService {
       );
   }
 
-  update(language: Language, id: string): Observable<Language> {
-    return this.apiService.put(`${this.LANGUAGE_URL}${id}`, {language: language})
+  update(language: Language, id: number | string): Observable<Language> {
+    return this.apiService.put(`${this.LANGUAGE_URL}${id}`, language)
       .pipe(
         map((data) => {
             return data;
@@ -63,8 +63,8 @@ export class LanguageService {
       );
   }
 
-  delete(id: number): Observable<Language> {
-    return this.apiService.get(`${this.LANGUAGE_URL}id/${id}`)
+  delete(id: number | string): Observable<Language> {
+    return this.apiService.delete(`${this.LANGUAGE_URL}${id}`)
       .pipe(
         map((data) => {
             return data;
