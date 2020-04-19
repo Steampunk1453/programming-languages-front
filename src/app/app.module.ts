@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ContentLayoutComponent} from "./layout/content-layout/content-layout.component";
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 import {ToastrModule} from "ngx-toastr";
+import {ExtendedModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -23,21 +24,22 @@ import {ToastrModule} from "ngx-toastr";
     NavComponent,
     AuthLayoutComponent
   ],
-  imports: [
-    // angular
-    BrowserModule,
-    // 3rd party
-    AuthModule,
-    // core & shared
-    CoreModule,
-    SharedModule,
-    // app
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
-    })
-  ],
+    imports: [
+        // angular
+        BrowserModule,
+        // 3rd party
+        AuthModule,
+        // core & shared
+        CoreModule,
+        SharedModule,
+        // app
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot({
+            positionClass: 'toast-bottom-right'
+        }),
+        ExtendedModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

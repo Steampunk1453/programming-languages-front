@@ -1,7 +1,6 @@
-import { DatePipe } from '@angular/common';
-import { Component, forwardRef, Injector, OnInit } from '@angular/core';
-import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { map, tap } from 'rxjs/operators';
+import {DatePipe} from '@angular/common';
+import {Component, forwardRef, OnInit} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'app-datepicker-input',

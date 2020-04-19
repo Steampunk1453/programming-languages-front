@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {ContentLayoutComponent} from "./layout/content-layout/content-layout.component";
 import {AuthLayoutComponent} from "./layout/auth-layout/auth-layout.component";
 import {AuthGuard} from "./core/guard/auth.guard";

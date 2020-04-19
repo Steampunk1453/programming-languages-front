@@ -8,6 +8,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class ErrorDialogService {
     public isDialogOpen: Boolean = false;
     constructor(public dialog: MatDialog) { }
+
     openDialog(data): any {
         if (this.isDialogOpen) {
             return false;
