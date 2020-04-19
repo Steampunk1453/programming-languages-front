@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
   HttpInterceptor,
   HttpRequest,
-  HttpResponse,
-  HttpHandler,
-  HttpEvent,
-  HttpErrorResponse
+  HttpResponse
 } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import {ErrorDialogService} from "../../shared/service/error-dialog.service";
 import {HttpError} from "../../data/dto/http-error";
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
@@ -23,7 +23,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     const token: string = localStorage.getItem('token');
 
     if (token) {
-      request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
+      request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token)});
     }
 
     if (!request.headers.has('Content-Type')) {
@@ -37,9 +37,9 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           console.log('event--->>>', event);
           if(event.status && event.statusText) {
-            this.toastService.success(event.statusText)
+            const message: string = `Action executed successfully: ${event.statusText}`
+            this.toastService.success(message)
           }
-          // this.errorDialogService.openDialog(event);
         }
         return event;
       }),

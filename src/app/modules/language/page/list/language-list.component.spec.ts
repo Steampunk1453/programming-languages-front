@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ContentLayoutComponent} from './content-layout.component';
+import {LanguageListComponent} from './language-list.component';
 
-describe('ContentLayoutComponent', () => {
-  let component: ContentLayoutComponent;
-  let fixture: ComponentFixture<ContentLayoutComponent>;
+describe('ListLanguageComponent', () => {
+  let component: LanguageListComponent;
+  let fixture: ComponentFixture<LanguageListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentLayoutComponent ]
+      declarations: [ LanguageListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContentLayoutComponent);
+    fixture = TestBed.createComponent(LanguageListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

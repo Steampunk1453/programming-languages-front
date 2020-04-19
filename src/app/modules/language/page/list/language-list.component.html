@@ -1,0 +1,63 @@
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+</mat-form-field>
+<div class="mat-elevation-z8">
+  <mat-spinner [style.display]="loading ? 'block' : 'none'"></mat-spinner>
+  <mat-table [style.display]="loading === false ? 'block' : 'none'" #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="designed">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Designed</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.designed}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="year">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Year</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.year}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="version">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Version</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.version}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Repositories</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.total}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="stars">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Stars</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.stars}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="forks">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Forks</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.forks}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="watchers">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Watchers</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.watchers}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="openIssues">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>OpenIssues</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.openIssues}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="operations">
+      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button color="primary" (click)="editLanguage(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button color="primary" (click)="deleteLanguage(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator [style.display]="loading === false ? 'block' : 'none'" [pageSize]="5"></mat-paginator>
+</div>

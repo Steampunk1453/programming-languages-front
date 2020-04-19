@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { tap, delay, finalize, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {catchError, delay, finalize, tap} from 'rxjs/operators';
+import {of} from 'rxjs';
 import {AuthService} from "../../../../core/service/auth.service";
 
 
@@ -17,11 +17,10 @@ export class LoginComponent implements OnInit {
   isLoading: boolean;
   loginForm: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private authService: AuthService
-  ) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private authService: AuthService) {
+
     this.buildForm();
   }
 
@@ -40,16 +39,19 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.isLoading = true;
-
     const credentials = this.loginForm.value;
 
     this.authService.login(credentials)
       .pipe(
         delay(1000),
-        tap(user => this.router.navigate(['/dashboard/home'])),
+        tap(user => this.router.navigate(['/home'])),
         finalize(() => this.isLoading = false),
         catchError(error => of(this.error = error))
       ).subscribe();
+  }
+
+  logout() {
+    this.authService.logout()
   }
 
 }

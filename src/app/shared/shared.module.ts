@@ -1,36 +1,48 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {ToastrModule} from 'ngx-toastr';
+import {NgModule} from '@angular/core';
+import {CommonModule, DatePipe} from '@angular/common';
 
 
 import {
   faAsterisk,
   faBars,
-  faUserCircle,
-  faPowerOff,
-  faCog,
-  faPlayCircle,
-  faRocket,
-  faPlus,
-  faEdit,
-  faTrash,
-  faTimes,
-  faCaretUp,
+  faBook,
   faCaretDown,
+  faCaretUp,
+  faCheck,
+  faCog,
+  faEdit,
   faExclamationTriangle,
   faFilter,
-  faTasks,
-  faCheck,
-  faSquare,
   faLanguage,
-  faPaintBrush,
   faLightbulb,
-  faWindowMaximize,
+  faPaintBrush,
+  faPlayCircle,
+  faPlus,
+  faPowerOff,
+  faRocket,
+  faSquare,
   faStream,
-  faBook
+  faTasks,
+  faTimes,
+  faTrash,
+  faUserCircle,
+  faWindowMaximize
 } from '@fortawesome/free-solid-svg-icons';
 
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
+import {ControlMessagesComponent} from './component/control-messages/control-messages.component';
+import {SpinnerComponent} from './component/spinner/spinner.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {MaterialModule} from "./material.module";
+import {NgxMasonryModule} from "ngx-masonry";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {ErrorDialogComponent} from "./component/error-dialog/error-dialog.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import {DatepickerInputComponent} from "./component/date-picker/components/datepicker-input/datepicker-input.component";
 
 library.add(
   faGithub,
@@ -60,20 +72,8 @@ library.add(
   faBook
 );
 
-import { ControlMessagesComponent } from './component/control-messages/control-messages.component';
-import { SpinnerComponent } from './component/spinner/spinner.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RouterModule} from "@angular/router";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {MaterialModule} from "./material.module";
-import {NgxMasonryModule} from "ngx-masonry";
-import {library} from "@fortawesome/fontawesome-svg-core";
-import {ErrorDialogComponent} from "./component/error-dialog/error-dialog.component";
-import {MatDialogModule} from "@angular/material/dialog";
-
 @NgModule({
-  declarations: [ControlMessagesComponent, SpinnerComponent, ErrorDialogComponent],
+  declarations: [ControlMessagesComponent, SpinnerComponent, ErrorDialogComponent, DatepickerInputComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -81,6 +81,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     RouterModule,
     NgbModule,
     FontAwesomeModule,
+    BsDatepickerModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -91,10 +92,14 @@ import {MatDialogModule} from "@angular/material/dialog";
     NgbModule,
     FontAwesomeModule,
     NgxMasonryModule,
+    MatDialogModule,
     ControlMessagesComponent,
     SpinnerComponent,
     ErrorDialogComponent,
-    MatDialogModule
-  ]
+    DatepickerInputComponent,
+  ],
+  providers: [
+    DatePipe
+  ],
 })
 export class SharedModule { }

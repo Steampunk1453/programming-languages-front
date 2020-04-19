@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { OverlayContainer } from '@angular/cdk/overlay';
+import {Component, OnInit} from '@angular/core';
+import {OverlayContainer} from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-content-layout',
@@ -9,8 +9,6 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 export class ContentLayoutComponent implements OnInit {
   private overlayContainer: OverlayContainer;
   public theme = 'my-light-theme';
-
-  constructor() {}
 
   ngOnInit() {
     if (this.overlayContainer) {

@@ -1,7 +1,12 @@
 export class Language {
+  id: string;
   name: string;
-  designed: string;
-  year: number;
   version: string;
-  web: string;
+  year: number;
+  designed: string;
+  total?: number;
+  stars?: number;
+  forks?: number;
+  watchers?: number;
+  openIssues?: number;
 }

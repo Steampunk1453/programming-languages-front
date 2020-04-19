@@ -17,6 +17,8 @@
 
 @import "../node_modules/ngx-toastr/toastr.css";
 
+@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+
 @mixin custom-components-theme($theme) {
   @include my-styles-reset-theme($theme);
 }
