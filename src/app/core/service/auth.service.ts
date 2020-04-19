@@ -1,14 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {map} from "rxjs/operators";
 import {ApiService} from "../../data/service/api.service";
 import {User} from "../../data/schema/user";
-
-interface LoginContextInterface {
-  username: string;
-  password: string;
-  token: string;
-}
 
 
 @Injectable({
@@ -31,8 +25,8 @@ export class AuthService {
       );
   }
 
-  login(loginContext: LoginContextInterface): Observable<string> {
-    return this.apiService.post(this.USER_URL + '/login', loginContext)
+  login(login: User): Observable<string> {
+    return this.apiService.post(this.USER_URL + '/login', login)
       .pipe(
         map((data) => {
           this.saveToken(data)
@@ -43,16 +37,16 @@ export class AuthService {
       );
   }
 
-  private saveToken(loginResponse: any) {
-    if (loginResponse) {
-      localStorage.setItem('token', loginResponse.token);
-      console.log('Token:' + loginResponse.token);
-    }
-  }
-
   logout() {
     this.isAuthenticated = false;
     localStorage.removeItem('token');
+    console.log('User logout');
   }
 
+  private saveToken(loginResponse: any) {
+    if (loginResponse) {
+      localStorage.setItem('token', loginResponse.token);
+      console.log('Token: ' + loginResponse.token);
+    }
+  }
 }
