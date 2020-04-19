@@ -9,7 +9,7 @@ import {AuthService} from "../../../../core/service/auth.service";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   error: string;
@@ -18,6 +18,7 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router) {
+
     this.buildForm();
   }
 
