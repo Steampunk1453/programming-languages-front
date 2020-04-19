@@ -4,5 +4,9 @@ export class Language {
   version: string;
   year: number;
   designed: string;
-  web: string;
+  total?: number;
+  stars?: number;
+  forks?: number;
+  watchers?: number;
+  openIssues?: number;
 }
